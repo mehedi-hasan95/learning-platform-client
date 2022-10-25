@@ -1,7 +1,10 @@
 import React from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
 
 const Menu = () => {
+    const { user, logOut } = useContext(AuthContext);
     return (
         <div>
             <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
@@ -25,12 +28,22 @@ const Menu = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/blog' className="flex items-center px-4 -mb-1 dark:border-transparent">Blog</NavLink>
                         </li>
-                        <li className="flex">
-                            <NavLink rel="noopener noreferrer" to='/login' className="flex items-center px-4 -mb-1 dark:border-transparent">Login</NavLink>
-                        </li>
-                        <li className="flex">
-                            <NavLink rel="noopener noreferrer" to='/register' className="flex items-center px-4 -mb-1 dark:border-transparent">Register</NavLink>
-                        </li>
+                        {
+                            user?.uid ?
+                                <li onClick={logOut} className="flex">
+                                    <NavLink rel="noopener noreferrer" className="flex items-center px-4 -mb-1 dark:border-transparent">Log Out</NavLink>
+                                </li>
+                                :
+                                <>
+                                    <li className="flex">
+                                        <NavLink rel="noopener noreferrer" to='/login' className="flex items-center px-4 -mb-1 dark:border-transparent">Login</NavLink>
+                                    </li>
+
+                                    <li className="flex">
+                                        <NavLink rel="noopener noreferrer" to='/register' className="flex items-center px-4 -mb-1 dark:border-transparent">Register</NavLink>
+                                    </li>
+                                </>
+                        }
                     </ul>
                 </div>
             </header>
