@@ -25,6 +25,12 @@ const Menu = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/blog' className="flex items-center px-4 -mb-1 dark:border-transparent">Blog</NavLink>
                         </li>
+                        <li className="flex">
+                            <NavLink rel="noopener noreferrer" to='/login' className="flex items-center px-4 -mb-1 dark:border-transparent">Login</NavLink>
+                        </li>
+                        <li className="flex">
+                            <NavLink rel="noopener noreferrer" to='/register' className="flex items-center px-4 -mb-1 dark:border-transparent">Register</NavLink>
+                        </li>
                     </ul>
                 </div>
             </header>
