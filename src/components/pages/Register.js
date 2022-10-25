@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
+
+    const [error, setError] = useState('');
+    const {registrationWithEmail} = useContext(AuthContext);
 
     const  handleRegister = event => {
         event.preventDefault();
@@ -12,7 +18,27 @@ const Register = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
 
-        console.log(name, email, photoUrl, password, confirm);
+        
+        if (password.length < 6 && password.length < 6) {
+            setError("Your password should be 6 digits");
+        }
+        if (password !== confirm) {
+            setError("Your Password didn't match")
+        }
+
+        // registration with email;
+        registrationWithEmail(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                form.reset();
+                toast.success('Thank you for ragistration', {
+                    autoClose: 500,
+                  })
+            })
+            .catch((error) => {
+                console.error('error', error);
+                setError(error.message);
+            })
     }
     
     return (
@@ -40,6 +66,9 @@ const Register = () => {
                         <label className="block dark:text-gray-400">Password</label>
                         <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 text-black focus:dark:border-violet-400" />
                     </div>
+                    {
+                        error && <p className='text-red-700'>{error}</p>
+                    }
                     <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-violet-400">Register</button>
                 </form>
                 <div className="flex items-center pt-4 space-x-1">
