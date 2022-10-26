@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -38,14 +38,14 @@ const AuthProvider = ({children}) => {
     // Sign Out
     const logOut = () => {
         setLoading(true);
-        signOut(auth).then(() => {})
-        .catch((error) => {});
+        signOut(auth).then(() => { })
+            .catch((error) => { });
     }
 
     // Auth Status change
-    useEffect( () => {
+    useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-                setUser(currentUser);
+            setUser(currentUser);
             setLoading(false);
         })
         return () => {
@@ -57,7 +57,7 @@ const AuthProvider = ({children}) => {
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
-            <ToastContainer position="top-right"/>
+            <ToastContainer position="top-right" />
         </AuthContext.Provider>
     );
 };

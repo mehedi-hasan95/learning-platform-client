@@ -42,8 +42,8 @@ const Register = () => {
         registrationWithEmail(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                handleNameAndUrl();
-                form.reset(name, photoUrl);
+                form.reset();
+                handleNameAndUrl(name, photoUrl);
                 toast.success('Thank you for ragistration', {
                     autoClose: 500,
                   })
