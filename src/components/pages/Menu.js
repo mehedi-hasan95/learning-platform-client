@@ -6,7 +6,6 @@ import { FaUserAlt } from 'react-icons/fa';
 
 const Menu = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
     return (
         <div>
             <header className="p-4 dark:bg-gray-800 dark:text-gray-100">

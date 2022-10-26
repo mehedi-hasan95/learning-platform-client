@@ -4,7 +4,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 const CourseDetails = () => {
     const courseDetails = useLoaderData();
     const { author, category_name, details, image_url, price, rating, thumbnail_url, title, total_student } = courseDetails;
-    console.log(courseDetails);
+
+    
     return (
         <div>
             <div style={{ backgroundImage: `url(${image_url})` }} className="mb-6 relative py-28 md:py-52 lg:py-60 before:absolute before:top-0 before:h-full before:w-full before:contents('') before:bg-black before:opacity-50 mb-7">

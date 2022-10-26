@@ -20,7 +20,7 @@ const Login = () => {
         googleSignIn(provider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                toast.success("Thank you for login", {autoClose: 500});
             })
             .catch((error) => {
                 const errorMessage = error.message;
@@ -40,6 +40,7 @@ const Login = () => {
                 const user = result.user;
                 form.reset();
                 navigate(from, { replace: true });
+                toast.success("Thank you for login", {autoClose: 500});
             })
             .catch((error) => {
                 console.error('error', error);
