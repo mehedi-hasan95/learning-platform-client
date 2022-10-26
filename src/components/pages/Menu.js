@@ -31,6 +31,7 @@ const Menu = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/blog' className="flex items-center px-4 -mb-1 dark:border-transparent">Blog</NavLink>
                         </li>
+<<<<<<< HEAD
                         {user?.uid &&
                             <li className="flex">
                                 <div class="relative before:z-10 before:bg-gray-700 before:px-2 before:py-1.5 before:text-white before:invisible before:content-[attr(data-tip)] hover:before:visible" data-tip={user.displayName}>
@@ -42,6 +43,12 @@ const Menu = () => {
                                 }
                                 </div>
                             </li>
+=======
+                        { user?.uid && 
+                        <li className="flex">
+                            <NavLink rel="noopener noreferrer" to='/blog' className="flex items-center px-4 -mb-1 dark:border-transparent"><img className=' rounded-full w-[2rem]' src={user.photoURL} alt="" /></NavLink>
+                        </li>
+>>>>>>> 61f65ec2f57e41300730ed0575bb6cee94dfcf87
                         }
                         {
                             user?.uid ?
