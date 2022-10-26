@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
 const Menu = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     console.log(user);
     return (
         <div>
@@ -29,13 +29,22 @@ const Menu = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/blog' className="flex items-center px-4 -mb-1 dark:border-transparent">Blog</NavLink>
                         </li>
-                        <li className="flex">
-                            <NavLink rel="noopener noreferrer" to='/login' className="flex items-center px-4 -mb-1 dark:border-transparent">Login</NavLink>
-                        </li>
+                        {
+                            user?.uid ?
+                                <li className="flex">
+                                    <NavLink rel="noopener noreferrer" onClick={logOut} className="flex items-center px-4 -mb-1 dark:border-transparent">Log Out</NavLink>
+                                </li>
+                                :
+                                <>
+                                    <li className="flex">
+                                        <NavLink rel="noopener noreferrer" to='/login' className="flex items-center px-4 -mb-1 dark:border-transparent">Login</NavLink>
+                                    </li>
 
-                        <li className="flex">
-                            <NavLink rel="noopener noreferrer" to='/register' className="flex items-center px-4 -mb-1 dark:border-transparent">Register</NavLink>
-                        </li>
+                                    <li className="flex">
+                                        <NavLink rel="noopener noreferrer" to='/register' className="flex items-center px-4 -mb-1 dark:border-transparent">Register</NavLink>
+                                    </li>
+                                </>
+                        }
                     </ul>
                 </div>
             </header>

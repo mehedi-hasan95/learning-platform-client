@@ -1,5 +1,5 @@
-import React, { createContext, useState } from 'react';
-import { getAuth, signInWithPopup } from "firebase/auth";
+import React, { createContext, useEffect, useState } from 'react';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/Firebase.init";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,7 +18,42 @@ const AuthProvider = ({children}) => {
         signInWithPopup(auth, provider)
     }
 
-    const authInfo = {googleSignIn}
+    // Registration Form
+    const registrationWithEmail = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+
+    // Login with Email
+    const loginWithEmail = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    // Update user Name
+    const updateName = (profile) => {
+        return updateProfile(auth.currentUser, profile);
+    }
+
+    // Sign Out
+    const logOut = () => {
+        setLoading(true);
+        signOut(auth).then(() => {})
+        .catch((error) => {});
+    }
+
+    // Auth Status change
+    useEffect( () => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+                setUser(currentUser);
+            setLoading(false);
+        })
+        return () => {
+            unsubscribe();
+        }
+    }, []);
+
+    const authInfo = { user, googleSignIn, logOut, registrationWithEmail, loginWithEmail, updateName }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

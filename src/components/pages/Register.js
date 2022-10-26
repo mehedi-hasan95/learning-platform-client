@@ -8,7 +8,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 const Register = () => {
 
     const [error, setError] = useState('');
-    const {googleSignIn} = useContext(AuthContext);
+    const {googleSignIn, registrationWithEmail, updateName} = useContext(AuthContext);
 
     // Google Sign In 
     const provider = new GoogleAuthProvider();
@@ -39,7 +39,31 @@ const Register = () => {
             setError("Your Password didn't match")
         }
 
+        registrationWithEmail(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                handleNameAndUrl();
+                form.reset(name, photoUrl);
+                toast.success('Thank you for ragistration', {
+                    autoClose: 500,
+                  })
+            })
+            .catch((error) => {
+                console.error('error', error);
+                setError(error.message);
+            })
         
+    }
+
+    // Handle update name and PhotoUrl
+    const handleNameAndUrl = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL,
+        }
+        updateName(profile)
+        .then(() => {})
+        .catch((error) => {});
     }
     
     return (
