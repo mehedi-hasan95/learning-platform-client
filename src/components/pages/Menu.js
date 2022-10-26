@@ -29,6 +29,11 @@ const Menu = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/blog' className="flex items-center px-4 -mb-1 dark:border-transparent">Blog</NavLink>
                         </li>
+                        { user?.uid && 
+                        <li className="flex">
+                            <NavLink rel="noopener noreferrer" to='/blog' className="flex items-center px-4 -mb-1 dark:border-transparent"><img className=' rounded-full w-[2rem]' src={user.photoURL} alt="" /></NavLink>
+                        </li>
+                        }
                         {
                             user?.uid ?
                                 <li className="flex">
