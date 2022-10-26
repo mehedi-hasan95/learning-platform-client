@@ -5,7 +5,7 @@ import { AuthContext } from '../context/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { loginWithEmail } = useContext(AuthContext);
+    const {  } = useContext(AuthContext);
 
     const handleLogin = event => {
         event.preventDefault();
@@ -14,18 +14,7 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password);
 
-        loginWithEmail(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                form.reset();
-                setError('')
-                toast.success("Thank you for login", {autoClose: 1000})
-                console.log(user);
-            })
-            .catch((error) => {
-                console.error('error', error);
-                setError(error.message);
-            })
+        
     }
     return (
         <div className= 'w-96 mx-auto'>
