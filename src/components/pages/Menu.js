@@ -2,9 +2,11 @@ import React from 'react';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Menu = () => {
     const { user, logOut } = useContext(AuthContext);
+    console.log(user);
     return (
         <div>
             <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
@@ -19,6 +21,7 @@ const Menu = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/home' className="flex items-center px-4 -mb-1 dark:border-transparent">Home</NavLink>
                         </li>
+                        
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/course' className="flex items-center px-4 -mb-1 dark:border-transparent">Course</NavLink>
                         </li>
@@ -28,10 +31,22 @@ const Menu = () => {
                         <li className="flex">
                             <NavLink rel="noopener noreferrer" to='/blog' className="flex items-center px-4 -mb-1 dark:border-transparent">Blog</NavLink>
                         </li>
+                        {user?.uid &&
+                            <li className="flex">
+                                <div class="relative before:z-10 before:bg-gray-700 before:px-2 before:py-1.5 before:text-white before:invisible before:content-[attr(data-tip)] hover:before:visible" data-tip={user.displayName}>
+                                {
+                                    user?.photoURL ?
+                                        <NavLink rel="noopener noreferrer" className="flex items-center px-4 -mb-1 dark:border-transparent"><img className=' rounded-full w-[2rem]' src={user.photoURL} alt="" /></NavLink>
+                                        :
+                                        <NavLink rel="noopener noreferrer" className="flex items-center px-4 -mb-1 dark:border-transparent"><FaUserAlt className=' rounded-full w-[2rem]' /></NavLink>
+                                }
+                                </div>
+                            </li>
+                        }
                         {
                             user?.uid ?
-                                <li onClick={logOut} className="flex">
-                                    <NavLink rel="noopener noreferrer" className="flex items-center px-4 -mb-1 dark:border-transparent">Log Out</NavLink>
+                                <li className="flex">
+                                    <NavLink rel="noopener noreferrer" onClick={logOut} className="flex items-center px-4 -mb-1 dark:border-transparent">Log Out</NavLink>
                                 </li>
                                 :
                                 <>
