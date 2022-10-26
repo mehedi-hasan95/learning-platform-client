@@ -43,7 +43,7 @@ const CourseDetails = () => {
                         <h4 className='text-lg'>Rating: {rating.number}</h4>
                         <h4 className='text-lg'>Enrolled: {total_student}</h4>
                         <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start mt-5">
-                            <Link rel="noopener noreferrer" to='' className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 hover:bg-violet-700 transition duration-500 text-gray-900 hover:text-white">Buy Now</Link>
+                            <Link rel="noopener noreferrer" to='/checkout' className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 hover:bg-violet-700 transition duration-500 text-gray-900 hover:text-white">Buy Now</Link>
                         </div>
                     </div>
                 </section>
