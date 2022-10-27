@@ -8,7 +8,7 @@ const Menu = () => {
     const { user, logOut } = useContext(AuthContext);
     return (
         <div>
-            <header className="p-4 dark:bg-gray-800 dark:text-gray-100">
+            <header className="p-4 bg-gray-800 text-gray-100 mb-5">
                 <div className="container flex justify-between h-16 mx-auto">
                     <Link rel="noopener noreferrer" to='/' aria-label="Back to homepage" className="flex items-center p-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-8 h-8 dark:text-violet-400">
@@ -19,7 +19,7 @@ const Menu = () => {
                     </Link>
                     <ul className="items-stretch hidden space-x-3 md:flex">
                         <li className="flex">
-                            <NavLink rel="noopener noreferrer" to='/home' className="flex items-center px-4 -mb-1 dark:border-transparent">Home</NavLink>
+                            <NavLink rel="noopener noreferrer" to='/home' className=" flex items-center px-4 -mb-1 dark:border-transparent">Home</NavLink>
                         </li>
 
                         <li className="flex">

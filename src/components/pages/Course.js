@@ -20,8 +20,8 @@ const Course = () => {
                     </div>
                 </section>
             </div>
-            <div className='grid grid-cols-3 gap-4'>
-                <div className='bg-gray-800 p-5'>
+            <div className='grid md:grid-cols-3 gap-4'>
+                <div className=' bg-gray-800 p-5'>
                     <h2 className='text-violet-400 text-2xl pb-5 font-bold'>All Courses</h2>
                     {
                         categories.map(category => <p className='pb-4 text-xl text-white hover:text-violet-300 font-semibold' key={category.id}> <Link to={`/course/${category.id}`}>{category.name}: {category.title}</Link> </p>)
