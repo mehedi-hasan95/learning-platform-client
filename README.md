@@ -17,3 +17,4 @@ I use react icon, react-router-dom, react-to-print, react-toastify
 This is a website where you can buy courses. You can easily move from one page to another. Moreover, each course is detailed. Your picture will show if you are logged in. Hover over the picture to see your name.
 
 # Live website link:
+<a href="https://learning-platform-16bc6.web.app">Click to view live website</a>
