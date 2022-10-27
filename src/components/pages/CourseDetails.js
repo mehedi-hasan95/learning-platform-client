@@ -31,9 +31,6 @@ const CourseDetails = () => {
                     <div className="flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
                         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                             <h1 className="text-5xl font-bold leading-none sm:text-6xl">{title}</h1>
-                            <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start mt-5">
-                                <Link rel="noopener noreferrer" to='/checkout' className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 hover:bg-violet-700 transition duration-500 text-gray-900 hover:text-white">Buy Now</Link>
-                            </div>
                         </div>
                         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
                             <img src={thumbnail_url} alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
@@ -41,7 +38,7 @@ const CourseDetails = () => {
                     </div>
                 </section>
                 <section className='grid grid-cols-3 gap-4 bg-gray-300 p-5'>
-                    <div className='col-span-2'>
+                    <div className='md:col-span-2'>
                         <div>
                             <img src={author.img} className="h-16 rounded-full mb-3" alt="" />
                             <h4 className='text-xl mb-2'>Author: {author.name}</h4>
