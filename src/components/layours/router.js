@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         {path: '*', element: <Error></Error>},
         {
             path: '/course/:id', element: <CourseDetails></CourseDetails>,
-            loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`),
+            loader: ({ params }) => fetch(`https://lerning-platform-server-side-mehedititu.vercel.app/categories/${params.id}`),
         },
     ],
 }

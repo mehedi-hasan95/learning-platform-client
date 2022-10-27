@@ -5,7 +5,7 @@ import SingleCourse from './SingleCourse';
 const Course = () => {
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/categories`)
+        fetch(`https://lerning-platform-server-side-mehedititu.vercel.app/categories`)
             .then(res => res.json())
             .then(data => setCategories(data))
     }, []);
