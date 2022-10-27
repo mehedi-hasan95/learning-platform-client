@@ -3,11 +3,14 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 
 const Checkout = () => {
-    const { user } = useContext(AuthContext);
+    const { user, cart } = useContext(AuthContext);
     const [btnChecked, setBtnChecked] = useState(false);
     const handleAccepeted = event => {
         setBtnChecked(event.target.checked);
     }
+
+    // Purchase Book 
+    const {category_name, title, price} = cart[0];
     return (
         <section className="p-6 bg-gray-800 text-gray-50">
             <h2 className='text-center text-3xl'>Order Page</h2>
@@ -15,7 +18,9 @@ const Checkout = () => {
                 <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
                     <div className="space-y-2 col-span-full lg:col-span-1">
                         <p className=" text-2xl">Hello, {user.displayName}</p>
-                        <p className="">Thank you for stay with us</p>
+                        <p className="text-xl">Your Cart List:</p>
+                        <p>Book Category: {category_name}</p>
+                        <p>Book Name: {title}</p>
                     </div>
                     <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                         <div className="col-span-full sm:col-span-3">
@@ -39,7 +44,7 @@ const Checkout = () => {
                             <input onClick={handleAccepeted} type="checkbox" name="" id="" />
                         </div>
                         <button className='bg-violet-400 px-4 py-2 rounded mt-4 inline-block hover:bg-violet-700 transition duration-500 font-semibold' type="submit" disabled={!btnChecked}>
-                            Pay Now
+                            Pay ${price}
                         </button>
                     </div>
                 </fieldset>

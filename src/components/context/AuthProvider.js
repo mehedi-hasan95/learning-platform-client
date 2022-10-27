@@ -58,10 +58,15 @@ const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    
+    // Test 
+    const [cart, setCart] = useState([]);
+    const clickHandaler = cource => {
+        const newCart = [cource];
+        setCart(newCart);
+    }
     
 
-    const authInfo = { user, googleSignIn, githubLogIn, logOut, registrationWithEmail, loginWithEmail, updateName, loading }
+    const authInfo = { user, cart, clickHandaler, googleSignIn, githubLogIn, logOut, registrationWithEmail, loginWithEmail, updateName, loading }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

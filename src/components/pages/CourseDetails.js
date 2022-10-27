@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
+import { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
+import { AuthContext } from '../context/AuthProvider';
 
 const CourseDetails = () => {
 
@@ -14,6 +16,10 @@ const CourseDetails = () => {
     const courseDetails = useLoaderData();
     const { author, category_name, details, image_url, price, rating, thumbnail_url, title, total_student } = courseDetails;
 
+
+
+    // Test
+    const {clickHandaler} = useContext(AuthContext);
 
     return (
         <div>
@@ -55,7 +61,7 @@ const CourseDetails = () => {
                             <h4 className='text-lg'>Enrolled: {total_student}</h4>
                         </div>
                         <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start mt-5">
-                            <Link rel="noopener noreferrer" to='/checkout' className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 hover:bg-violet-700 transition duration-500 text-gray-900 hover:text-white">Buy Now</Link>
+                            <Link onClick={()=>clickHandaler(courseDetails)} rel="noopener noreferrer" to='/checkout' className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 hover:bg-violet-700 transition duration-500 text-gray-900 hover:text-white">Buy Now</Link>
                             <Link onClick={handlePrint} rel="noopener noreferrer" className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 hover:bg-violet-700 transition duration-500 text-gray-900 hover:text-white">Download Details</Link>
                         </div>
                     </div>
