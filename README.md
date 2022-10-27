@@ -1,6 +1,9 @@
 # Who is the author of this websit?
 The author name is Mehedi Hasan.
 
+# What is Website name?
+The website name is: <a href="https://learning-platform-16bc6.web.app">Tech School</a>
+
 # About This Website
 This is a Course selling website.
 
