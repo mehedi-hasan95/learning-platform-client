@@ -10,11 +10,13 @@ import Error from "../pages/Error";
 import CourseDetails from "../pages/CourseDetails";
 import PrivateRoute from "./PrivateRoute";
 import Checkout from "../pages/Checkout";
+import PrintReact from "../pages/PrintReact";
 
 export const router = createBrowserRouter([
     {path: '/', element: <Main></Main>,
     children: [
         {path: '/', element: <Home></Home>},
+        {path: 'print', element: <PrintReact></PrintReact>},
         {path: 'home', element: <Home></Home>},
         {path: 'course', element: <Course></Course>},
         {path: 'faq', element: <Faq></Faq>},

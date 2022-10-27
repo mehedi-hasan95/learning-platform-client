@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { useReactToPrint } from 'react-to-print';
 
 const CourseDetails = () => {
+
+    //Start Printing properties
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+        documentTitle: 'Cource Download',
+    });
+    //End Printing Properties
     const courseDetails = useLoaderData();
     const { author, category_name, details, image_url, price, rating, thumbnail_url, title, total_student } = courseDetails;
 
-    
+
     return (
         <div>
             <div style={{ backgroundImage: `url(${image_url})` }} className="mb-6 relative py-28 md:py-52 lg:py-60 before:absolute before:top-0 before:h-full before:w-full before:contents('') before:bg-black before:opacity-50 mb-7">
@@ -36,15 +45,18 @@ const CourseDetails = () => {
                         <p>{details}</p>
                     </div>
                     <div className='bg-[#FDF9F8] p-5 flex flex-col gap-4'>
-                        <h3 className='text-xl'>{title}</h3>
-                        <h4 className='text-lg'> Price: ${price}</h4>
-                        <h4 className='text-lg'>Duration: 4 weeks</h4>
-                        <h4 className='text-lg'>Level: All levels</h4>
-                        <h4 className='text-lg'>Lectures: 4 lesson</h4>
-                        <h4 className='text-lg'>Rating: {rating.number}</h4>
-                        <h4 className='text-lg'>Enrolled: {total_student}</h4>
+                        <div ref={componentRef}>
+                            <h3 className='text-xl'>{title}</h3>
+                            <h4 className='text-lg'> Price: ${price}</h4>
+                            <h4 className='text-lg'>Duration: 4 weeks</h4>
+                            <h4 className='text-lg'>Level: All levels</h4>
+                            <h4 className='text-lg'>Lectures: 4 lesson</h4>
+                            <h4 className='text-lg'>Rating: {rating.number}</h4>
+                            <h4 className='text-lg'>Enrolled: {total_student}</h4>
+                        </div>
                         <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start mt-5">
                             <Link rel="noopener noreferrer" to='/checkout' className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 hover:bg-violet-700 transition duration-500 text-gray-900 hover:text-white">Buy Now</Link>
+                            <Link onClick={handlePrint} rel="noopener noreferrer" className="px-8 py-3 text-lg font-semibold rounded bg-violet-400 hover:bg-violet-700 transition duration-500 text-gray-900 hover:text-white">Download Details</Link>
                         </div>
                     </div>
                 </section>
